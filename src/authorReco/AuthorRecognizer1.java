@@ -104,7 +104,27 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 	 * @return the author of the sentence as recognized by the recognition system.
 	 */
 	public String recognizeAuthorSentence(String sentence) {
-		//TODO
+		// TODO
+/*   // Ceci est une proposition d'algorithme relativement intuitif. 
+		 //	Il s'agit de tester chaque modèle de langue 
+		 // et de sélectionner l'auteur dont le modèle de langue aura donné la proba la plus élevée.
+		 // Attention: ne traite pas le problème de corpus déséquilibré 
+		 // qui conduit à un modèle de langue estimé sur plus de données à avoir une proba plus élevé 
+		 // qu'un autre estimé sur moins de données.
+
+auteurMax = ""
+scoreMax = -1
+pour chaque auteur de authorLangModelsMap:
+__pour chaque nom_modèle de authorLangModelsMap[auteur]
+____lm = authorLangModelsMap[auteur][nom_modèle]
+____score = lm.getSentenceProb(sentence)
+____si ce score est supérieur au précédent supérieur
+____alors ce score devient le nouveau supérieur
+______et je garde la trace de l'auteur
+retourner auteurMax
+*/
+
+
 		return UNKNOWN_AUTHOR;
 	}
 	
