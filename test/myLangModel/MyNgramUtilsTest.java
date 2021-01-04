@@ -1,11 +1,5 @@
-package langModel;
+package myLangModel;
 
-import langModel.NgramUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -31,7 +25,7 @@ import org.junit.rules.TestName;
  * @author N. Hernandez and S. Quiniou (2015)
  *
  */
-public class NgramUtilsTest {
+public class MyNgramUtilsTest {
 
     String sentence = "<s> cette phrase est de taille 9 . </s>";
     String ngram = "où commence l' historique de ce n-gramme";
@@ -45,7 +39,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#getSequenceSize(java.lang.String)}.
+     * Test method for {@link NgramUtils#getSequenceSize(java.lang.String)}.
      */
     @Test
     public void testGetSequenceSize() {
@@ -55,7 +49,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#generateNgrams(java.lang.String, int, int)}.
+     * Test method for {@link NgramUtils#generateNgrams(java.lang.String, int, int)}.
      */
     @Test
     public void testGenerateNgramsBigrams() {
@@ -65,7 +59,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#generateNgrams(java.lang.String, int, int)}.
+     * Test method for {@link NgramUtils#generateNgrams(java.lang.String, int, int)}.
      */
     @Test
     public void testGenerateNgrams1to3grams() {
@@ -75,7 +69,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#getHistory(java.lang.String, int)}.
+     * Test method for {@link NgramUtils#getHistory(java.lang.String, int)}.
      */
     @Test
     public void testGetHistoryOrder2() {
@@ -85,7 +79,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#getHistory(java.lang.String, int)}.
+     * Test method for {@link NgramUtils#getHistory(java.lang.String, int)}.
      */
     @Test
     public void testGetHistoryOrder3() {
@@ -94,7 +88,7 @@ public class NgramUtilsTest {
     }
 
     /**
-     * Test method for {@link langModel.NgramUtils#getHistory(java.lang.String, int)}.
+     * Test method for {@link NgramUtils#getHistory(java.lang.String, int)}.
      */
     @Test
     public void testGetHistoryOrder0() {
@@ -104,7 +98,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#decomposeIntoNgrams(java.lang.String, int)}.
+     * Test method for {@link NgramUtils#decomposeIntoNgrams(java.lang.String, int)}.
      */
     @Test
     public void testDecomposeInto1grams() {
@@ -114,7 +108,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#decomposeIntoNgrams(java.lang.String, int)}.
+     * Test method for {@link NgramUtils#decomposeIntoNgrams(java.lang.String, int)}.
      */
     @Test
     public void testDecomposeInto2grams() {
@@ -124,7 +118,7 @@ public class NgramUtilsTest {
 
 
     /**
-     * Test method for {@link langModel.NgramUtils#decomposeIntoNgrams(java.lang.String, int)}.
+     * Test method for {@link NgramUtils#decomposeIntoNgrams(java.lang.String, int)}.
      */
     @Test
     public void testDecomposeInto3grams() {

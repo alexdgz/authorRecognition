@@ -3,8 +3,8 @@ package authorReco;
 
 import java.util.*;
 
+import myLangModel.LanguageModelInterface;
 import authorEval.*;
-import langModel.*;
 
 
 /**
@@ -24,7 +24,7 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 	 * (e.g., "zola-bigrams"), and the values of the second map are the LanguageModel objects 
 	 * built from the file path given in the AuthorConfigurationFile attribute.
 	 */
-	protected Map<String, Map<String, LanguageModelInterface>> authorLangModelsMap;
+	protected Map<String, Map<String, myLangModel.LanguageModelInterface>> authorLangModelsMap;
 		
 	
 	
@@ -48,10 +48,10 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 		loadAuthorFile(authorFile);
 		
 		//creates the language model for each language id
-		authorLangModelsMap = new HashMap<String, Map<String, LanguageModelInterface>>();
+		authorLangModelsMap = new HashMap<String, Map<String, myLangModel.LanguageModelInterface>>();
 		
-		LanguageModelInterface lm;
-		NgramCounts ngramCounts;
+		myLangModel.LanguageModelInterface lm;
+		myLangModel.NgramCounts ngramCounts;
 
 		for(String author: configLangModels.getAuthors()){
 			for(String idLM: configLangModels.getAuthorNgramCountMap().get(author).keySet()){
@@ -61,11 +61,11 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 
 				// -----------------------------------------------------------------------
 				// SET: Choose the model class to use by commenting/uncommenting the right line  
-				lm = new NaiveLanguageModel();
+				lm = new myLangModel.NaiveLanguageModel();
 				//lm = new LaplaceLanguageModel();
 				// ------------------------------------------------------------------------
 
-				ngramCounts = new NgramCounts();
+				ngramCounts = new myLangModel.NgramCounts();
 				ngramCounts.readNgramCountsFile(configLangModels.getNgramCountPath(author, idLM));
 				lm.setNgramCounts(ngramCounts, vocabularyLM);
 				
@@ -83,8 +83,8 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 	 * @param lmName the name of the language model to add.
 	 * @param lm the LanguageModel to add.
 	 */
-	private void addTuple2AuthorLangModelsMap(String author, String lmName, LanguageModelInterface lm) {
-		Map<String, LanguageModelInterface> lmMap = null;
+	private void addTuple2AuthorLangModelsMap(String author, String lmName, myLangModel.LanguageModelInterface lm) {
+		Map<String, myLangModel.LanguageModelInterface> lmMap = null;
 		if (! authorLangModelsMap.containsKey(author)) 
 			 lmMap = new HashMap<String, LanguageModelInterface>();
 		else 
@@ -105,10 +105,13 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 	 */
 	public String recognizeAuthorSentence(String sentence) {
 		// TODO
-/*   // Ceci est une proposition d'algorithme relativement intuitif. 
+/*       // Ceci est une proposition d'algorithme relativement intuitif.
+		 //
 		 //	Il s'agit de tester chaque modèle de langue 
 		 // et de sélectionner l'auteur dont le modèle de langue aura donné la proba la plus élevée.
-		 // Attention: ne traite pas le problème de corpus déséquilibré 
+		 //
+		 // Attention: ne traite pas le problème de corpus déséquilibré
+		 // (le fait que les corpus d'entraînement n'ont pas le même nombre de mots)
 		 // qui conduit à un modèle de langue estimé sur plus de données à avoir une proba plus élevé 
 		 // qu'un autre estimé sur moins de données.
 

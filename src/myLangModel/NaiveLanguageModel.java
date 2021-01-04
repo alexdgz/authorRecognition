@@ -1,4 +1,4 @@
-package langModel;
+package myLangModel;
 
 
 /**
@@ -12,7 +12,7 @@ public class NaiveLanguageModel implements LanguageModelInterface {
 	/**
 	 * The NgramCountsInterface corresponding to the language model.
 	 */
-	protected NgramCountsInterface ngramCounts;
+	protected myLangModel.NgramCountsInterface ngramCounts;
 	
 	/**
 	 * The vocabulary of the language model.

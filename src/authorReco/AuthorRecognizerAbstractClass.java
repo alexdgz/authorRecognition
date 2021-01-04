@@ -3,7 +3,7 @@ package authorReco;
 
 import java.util.*;
 
-import langModel.*;
+import myLangModel.MiscUtils;
 
 
 /**
@@ -27,7 +27,7 @@ public abstract class AuthorRecognizerAbstractClass {
 	/**
 	 * The common vocabulary associated to the language models.
 	 */
-	protected VocabularyInterface vocabularyLM;
+	protected myLangModel.VocabularyInterface vocabularyLM;
 	
 	/**
 	 * List of authors recognized by the system. 
@@ -41,7 +41,7 @@ public abstract class AuthorRecognizerAbstractClass {
 	 */
 	public AuthorRecognizerAbstractClass() {
 		configLangModels = new AuthorConfigurationFile();
-		vocabularyLM = new Vocabulary();
+		vocabularyLM = new myLangModel.Vocabulary();
 		authors = new LinkedList<String>();
 	}
 	
@@ -62,7 +62,7 @@ public abstract class AuthorRecognizerAbstractClass {
 	 * 
 	 * @return the common vocabulary used by the language models of the recognition system.
 	 */
-	public VocabularyInterface getVocabularyLM() {
+	public myLangModel.VocabularyInterface getVocabularyLM() {
 		return this.vocabularyLM;
 	}
 	
@@ -109,7 +109,7 @@ public abstract class AuthorRecognizerAbstractClass {
 	public void loadAuthorFile(String authorFile) {
 		authors.clear();
 		
-		List<String> authorLines = MiscUtils.readTextFileAsStringList(authorFile);
+		List<String> authorLines = myLangModel.MiscUtils.readTextFileAsStringList(authorFile);
 		for (String author : authorLines) {
 			authors.add(author);
 		}
@@ -137,7 +137,7 @@ public abstract class AuthorRecognizerAbstractClass {
 	 */
 	public void recognizeFileLanguage(String testSentenceFilePath, String hypAuthorFilePath) {
 		//reads the sentences to recognize
-		List<String> sentences = MiscUtils.readTextFileAsStringList(testSentenceFilePath);
+		List<String> sentences = myLangModel.MiscUtils.readTextFileAsStringList(testSentenceFilePath);
 
 		//predicts the author of each sentence
 		String authorPredict;

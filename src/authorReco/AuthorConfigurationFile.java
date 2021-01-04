@@ -3,7 +3,7 @@ package authorReco;
 
 import java.util.*;
 
-import langModel.*;
+import myLangModel.MiscUtils;
 
 
 /**

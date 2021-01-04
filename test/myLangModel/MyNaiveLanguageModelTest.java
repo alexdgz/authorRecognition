@@ -1,15 +1,9 @@
-package langModel;
+package myLangModel;
 
-import langModel.NaiveLanguageModel;
-
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestName;
 
 
-public class NaiveLanguageModelTest {
+public class MyNaiveLanguageModelTest {
 
     @Test
     public void getLMOrder1() {

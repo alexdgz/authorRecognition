@@ -1,7 +1,7 @@
 package authorReco;
 
 
-import langModel.*;
+import myLangModel.NgramCountsInterface;
 
 /**
  * Class CreateLanguageModels: a class to create the language models used in the recognition systems.
@@ -49,7 +49,7 @@ public class CreateLanguageModels {
    // ! on utilise le même vocabulaire pour small et le corpus complet
 
     //création du vocabulaire
-    VocabularyInterface vocab = new Vocabulary();
+    myLangModel.VocabularyInterface vocab = new myLangModel.Vocabulary();
     vocab.readVocabularyFile("lm/"+repCorpus+"/corpus_20000.vocab");
     //vocab.readVocabularyFile("lm/small_author_corpus/corpus_20000.vocab");
 
@@ -62,70 +62,70 @@ public class CreateLanguageModels {
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus balzac.txt
     auteur = "balzac";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus hugo.txt
     auteur = "hugo";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus maupassant.txt
     auteur = "maupassant";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus moliere.txt
     auteur = "moliere";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus montaigne.txt
     auteur = "montaigne";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus sand.txt
     auteur = "sand";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus tocqueville.txt
     auteur = "tocqueville";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus tolstoi.txt
     auteur = "tolstoi";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus verne.txt
     auteur = "verne";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);
 
     //création du modèle de langage sans lissage, avec le vocabulaire, pour le corpus zola.txt
     auteur = "zola";
-    ngramCounts_vocab = new NgramCounts();
+    ngramCounts_vocab = new myLangModel.NgramCounts();
     ngramCounts_vocab.scanTextFile("data/"+repCorpus+"/train/"+auteur+".txt", vocab, order);
     ngramCounts_vocab.writeNgramCountFile("lm/"+repCorpus+"/"+prefLM+"_"+auteur+".lm");
     System.out.println("--> Modèle de langage créé pour "+auteur);

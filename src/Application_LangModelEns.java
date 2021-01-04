@@ -1,7 +1,7 @@
-import langModel.*;
+import langModel.NgramCountsInterface;
 
 
-public class Application_LanguageModels {
+public class Application_LangModelEns {
 
 	public static void main(String[] args) {
 		String sentence1 = "<s> antoine écoute une chanson </s>";
@@ -10,7 +10,7 @@ public class Application_LanguageModels {
 
 		/* création des vocabulaires */
 
-		VocabularyInterface vocab1, vocab2;
+		myLangModel.VocabularyInterface vocab1, vocab2;
 
 		//création du premier vocabulaire
 
@@ -36,7 +36,7 @@ public class Application_LanguageModels {
 		/* création des modèles de langage */
 
 		NgramCountsInterface ngramCounts_bigram_vocab1, ngramCounts_bigram_vocab2;
-		LanguageModelInterface lm_bigram_vocab1, lm_bigram_laplace_vocab1, lm_bigram_vocab2, lm_bigram_laplace_vocab2;
+		myLangModel.LanguageModelInterface lm_bigram_vocab1, lm_bigram_laplace_vocab1, lm_bigram_vocab2, lm_bigram_laplace_vocab2;
 
 		//création de l'objet ngramCounts_bigram_vocab1,
 		// à partir du corpus d'apprentissage "data/small_corpus/corpus_fr_train.txt" et de vocab1

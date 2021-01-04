@@ -5,8 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-import langModel.*;
-
+import myLangModel.MiscUtils;
 
 
 /**
@@ -29,8 +28,8 @@ public class RecognizerPerformance {
 	 * @return the accuracy of the recognition system.
 	 */
 	public static double evaluate (String refAuthorPath, String hypAuthorPath) {
-		List<String> ref = MiscUtils.readTextFileAsStringList(refAuthorPath);
-		List<String> hyp = MiscUtils.readTextFileAsStringList(hypAuthorPath);
+		List<String> ref = myLangModel.MiscUtils.readTextFileAsStringList(refAuthorPath);
+		List<String> hyp = myLangModel.MiscUtils.readTextFileAsStringList(hypAuthorPath);
 		
 		return evaluate(ref,hyp);	
 	}
@@ -78,7 +77,7 @@ public class RecognizerPerformance {
 	 */
 	public static String evaluateAuthors (String refAuthorPath, String hypAuthorPath) {
 		
-		List<String> gold = MiscUtils.readTextFileAsStringList(refAuthorPath);
+		List<String> gold = myLangModel.MiscUtils.readTextFileAsStringList(refAuthorPath);
 		List<String> hyp = MiscUtils.readTextFileAsStringList(hypAuthorPath);
 		
 		return evaluateAuthors(gold,hyp);	

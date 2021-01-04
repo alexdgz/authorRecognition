@@ -1,4 +1,4 @@
-package langModel;
+package myLangModel;
 
 
 import java.util.HashSet;

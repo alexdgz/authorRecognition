@@ -1,4 +1,4 @@
-package langModel;
+package myLangModel;
 
 
 import java.util.HashMap;
@@ -91,7 +91,7 @@ public class NgramCounts implements NgramCountsInterface {
 	@Override
 	public void incCounts(String ngram) {
 		ngramCounts.put(ngram, new Integer(getCounts(ngram)+1));
-		if(NgramUtils.getSequenceSize(ngram) == 1)
+		if(myLangModel.NgramUtils.getSequenceSize(ngram) == 1)
 			nbWordsTotal ++;
 	}
 
@@ -99,7 +99,7 @@ public class NgramCounts implements NgramCountsInterface {
 	@Override
 	public void setCounts(String ngram, int counts) {
 		ngramCounts.put(ngram, new Integer(counts));
-		if(NgramUtils.getSequenceSize(ngram) == 1)
+		if(myLangModel.NgramUtils.getSequenceSize(ngram) == 1)
 			nbWordsTotal += counts;
 	}
 
@@ -122,8 +122,8 @@ public class NgramCounts implements NgramCountsInterface {
 		setMaximalOrder(maximalOrder);
 		List<String> sentences = MiscUtils.readTextFileAsStringList(filePath);
 		for (String sentence : sentences) {
-			String sentenceVocab = NgramUtils.getStringOOV(sentence, vocab);
-			List<String> ngramList = NgramUtils.generateNgrams(sentenceVocab, 1, getMaximalOrder());
+			String sentenceVocab = myLangModel.NgramUtils.getStringOOV(sentence, vocab);
+			List<String> ngramList = myLangModel.NgramUtils.generateNgrams(sentenceVocab, 1, getMaximalOrder());
 			//System.out.println("Debug: order "+getMaximalOrder()+" ngrams"+ngramList);
 			for (String ngram : ngramList) 
 				incCounts(ngram);
