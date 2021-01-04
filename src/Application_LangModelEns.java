@@ -1,4 +1,6 @@
-import langModel.NgramCountsInterface;
+//Utiliser l'un ou l'autre des imports
+import langModel.*; //pour tester la bibliothèque fournie
+//import myLangModel.*; //pour tester les classes implémentées
 
 
 public class Application_LangModelEns {
@@ -10,7 +12,7 @@ public class Application_LangModelEns {
 
 		/* création des vocabulaires */
 
-		myLangModel.VocabularyInterface vocab1, vocab2;
+		VocabularyInterface vocab1, vocab2;
 
 		//création du premier vocabulaire
 
@@ -36,7 +38,7 @@ public class Application_LangModelEns {
 		/* création des modèles de langage */
 
 		NgramCountsInterface ngramCounts_bigram_vocab1, ngramCounts_bigram_vocab2;
-		myLangModel.LanguageModelInterface lm_bigram_vocab1, lm_bigram_laplace_vocab1, lm_bigram_vocab2, lm_bigram_laplace_vocab2;
+		LanguageModelInterface lm_bigram_vocab1, lm_bigram_laplace_vocab1, lm_bigram_vocab2, lm_bigram_laplace_vocab2;
 
 		//création de l'objet ngramCounts_bigram_vocab1,
 		// à partir du corpus d'apprentissage "data/small_corpus/corpus_fr_train.txt" et de vocab1
