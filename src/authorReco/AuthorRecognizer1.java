@@ -3,7 +3,7 @@ package authorReco;
 
 import java.util.*;
 
-import myLangModel.LanguageModelInterface;
+import langModel.*;
 import authorEval.*;
 
 
@@ -24,7 +24,7 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 	 * (e.g., "zola-bigrams"), and the values of the second map are the LanguageModel objects 
 	 * built from the file path given in the AuthorConfigurationFile attribute.
 	 */
-	protected Map<String, Map<String, myLangModel.LanguageModelInterface>> authorLangModelsMap;
+	protected Map<String, Map<String, LanguageModelInterface>> authorLangModelsMap;
 		
 	
 	
@@ -48,10 +48,10 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 		loadAuthorFile(authorFile);
 		
 		//creates the language model for each language id
-		authorLangModelsMap = new HashMap<String, Map<String, myLangModel.LanguageModelInterface>>();
+		authorLangModelsMap = new HashMap<String, Map<String, LanguageModelInterface>>();
 		
-		myLangModel.LanguageModelInterface lm;
-		myLangModel.NgramCounts ngramCounts;
+		LanguageModelInterface lm;
+		NgramCounts ngramCounts;
 
 		for(String author: configLangModels.getAuthors()){
 			for(String idLM: configLangModels.getAuthorNgramCountMap().get(author).keySet()){
@@ -61,11 +61,11 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 
 				// -----------------------------------------------------------------------
 				// SET: Choose the model class to use by commenting/uncommenting the right line  
-				lm = new myLangModel.NaiveLanguageModel();
+				lm = new NaiveLanguageModel();
 				//lm = new LaplaceLanguageModel();
 				// ------------------------------------------------------------------------
 
-				ngramCounts = new myLangModel.NgramCounts();
+				ngramCounts = new NgramCounts();
 				ngramCounts.readNgramCountsFile(configLangModels.getNgramCountPath(author, idLM));
 				lm.setNgramCounts(ngramCounts, vocabularyLM);
 				
@@ -83,8 +83,8 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 	 * @param lmName the name of the language model to add.
 	 * @param lm the LanguageModel to add.
 	 */
-	private void addTuple2AuthorLangModelsMap(String author, String lmName, myLangModel.LanguageModelInterface lm) {
-		Map<String, myLangModel.LanguageModelInterface> lmMap = null;
+	private void addTuple2AuthorLangModelsMap(String author, String lmName, LanguageModelInterface lm) {
+		Map<String, LanguageModelInterface> lmMap = null;
 		if (! authorLangModelsMap.containsKey(author)) 
 			 lmMap = new HashMap<String, LanguageModelInterface>();
 		else 
