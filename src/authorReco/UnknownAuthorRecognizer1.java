@@ -59,14 +59,14 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		/* Tests sur les 100 phrases de validation, avec les petits modèles de langage */
 		reco_small_author_corpus_100sentences();
 
-		/* Tests sur les 119 phrases de validation, dont 19 phrases d'un auteur inconnue,
+		/* Tests sur les 119 phrases de validation, dont 19 phrases d'un auteur inconnu,
 		   avec les petits modèles de langage. */
 		//reco_small_author_corpus_119sentences();
 
 		/* Tests sur les 5000 phrases de validation, avec les petits modèles de langage */
 		//reco_small_author_corpus_5000sentences();
 
-		/* Tests sur les 5019 phrases de validation, dont 19 phrases d'un auteur inconnue,
+		/* Tests sur les 5019 phrases de validation, dont 19 phrases d'un auteur inconnu,
 		   avec les petits modèles de langage. */
 		//reco_small_author_corpus_5019sentences();
 
@@ -75,7 +75,7 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		   que vous devez d'abord avoir construits. */
 		//reco_author_corpus_100sentences();
 
-		/* Tests sur les 119 phrases de validation, dont 19 phrases d'un auteur inconnue,
+		/* Tests sur les 119 phrases de validation, dont 19 phrases d'un auteur inconnu,
 		   avec les plus gros modèles de langage que vous devez d'abord avoir construits. */
 		//reco_author_corpus_119sentences();
 
@@ -83,7 +83,7 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		   que vous devez d'abord avoir construits. */
 		//reco_author_corpus_5000sentences();
 
-		/* Tests sur les 5019 phrases de validation, dont 19 phrases d'un auteur inconnue,
+		/* Tests sur les 5019 phrases de validation, dont 19 phrases d'un auteur inconnu,
 		   avec les plus gros modèles de langage que vous devez d'abord avoir construits. */
 		//reco_author_corpus_5019sentences();
 
@@ -113,14 +113,8 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String hypFilePath = dirPath + "authors_100sentences_small_author_corpus_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_100sentences_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+									 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -136,17 +130,11 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String dirPath = "data/small_author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences_test-unk_100sentences.txt";
-		String hypFilePath = dirPath + "authors_test-unk_small_author_corpus_hyp-recoUnknown1.txt";
+		String hypFilePath = dirPath + "authors_119sentences_small_author_corpus_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_test-unk_100sentences_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+						 		 	 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -161,17 +149,11 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String dirPath = "data/author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences.txt";
-		String hypFilePath = dirPath + "authors_small_author_corpus_hyp-recoUnknown1.txt";
+		String hypFilePath = dirPath + "authors_5000sentences_small_author_corpus_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 	 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -187,17 +169,11 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String dirPath = "data/author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences_test-unk.txt";
-		String hypFilePath = dirPath + "authors_test-unk_small_author_corpus_hyp-recoUnknown1.txt";
+		String hypFilePath = dirPath + "authors_5019sentences_small_author_corpus_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_test-unk_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 	 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -215,14 +191,8 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String hypFilePath = dirPath + "authors_100sentences_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_100sentences_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 	 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -238,17 +208,11 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String dirPath = "data/small_author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences_test-unk_100sentences.txt";
-		String hypFilePath = dirPath + "authors_test-unk_hyp-recoUnknown1.txt";
+		String hypFilePath = dirPath + "authors_119sentences_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_test-unk_100sentences_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 	 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -263,17 +227,11 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String dirPath = "data/author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences.txt";
-		String hypFilePath = dirPath + "authors_hyp-recoUnknown1.txt";
+		String hypFilePath = dirPath + "authors_5000sentences_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 	 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -289,17 +247,11 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String dirPath = "data/author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences_test-unk.txt";
-		String hypFilePath = dirPath + "authors_test-unk_hyp-recoUnknown1.txt";
+		String hypFilePath = dirPath + "authors_5019sentences_hyp-recoUnknown1.txt";
 		String refFilePath = dirPath + "authors_test-unk_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 	 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -314,13 +266,9 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String dirPath = "data/author_corpus/test/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences.txt";
-		String hypFilePath = dirPath + "authors_small_author_corpus_hyp-reco1.txt";
+		String hypFilePath = dirPath + "authors_small_author_corpus_hyp-recoUnknown1.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
+		create_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath, sentenceFilePath, hypFilePath);
 	}
 
 
@@ -337,11 +285,33 @@ public class UnknownAuthorRecognizer1 extends AuthorRecognizer1 {
 		String sentenceFilePath = dirPath + "sentences.txt";
 		String hypFilePath = dirPath + "authors_hyp-recoUnknown1.txt";
 
+		create_unk_hyp_file(configFilePath, vocabFilePath, authorFilePath, sentenceFilePath, hypFilePath);
+	}
+
+
+
+	public static void create_unk_hyp_file(String configFilePath, String vocabFilePath, String authorFilePath,
+										   String sentenceFilePath, String hypFilePath){
 		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
+		UnknownAuthorRecognizer1 reco1 = new UnknownAuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
 
 		//computation of the hypothesis author file
 		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
 	}
 
+
+	public static void create_evaluate_unk_hyp_file(String configFilePath, String vocabFilePath,
+													String authorFilePath, String sentenceFilePath,
+													String hypFilePath, String refFilePath) {
+
+		//initialization of the recognition system
+		UnknownAuthorRecognizer1 reco1 = new UnknownAuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
+
+		//computation of the hypothesis author file
+		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
+
+		//computation of the performance of the recognition system
+		System.out.println("\nPerformances du système : \n"
+				+ RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+	}
 }

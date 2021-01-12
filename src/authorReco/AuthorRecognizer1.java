@@ -48,7 +48,7 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 		loadAuthorFile(authorFile);
 		
 		//creates the language model for each language id
-		authorLangModelsMap = new HashMap<String, Map<String, LanguageModelInterface>>();
+		authorLangModelsMap = new HashMap<>();
 		
 		LanguageModelInterface lm;
 		NgramCounts ngramCounts;
@@ -84,9 +84,9 @@ public class AuthorRecognizer1 extends AuthorRecognizerAbstractClass {
 	 * @param lm the LanguageModel to add.
 	 */
 	private void addTuple2AuthorLangModelsMap(String author, String lmName, LanguageModelInterface lm) {
-		Map<String, LanguageModelInterface> lmMap = null;
+		Map<String, LanguageModelInterface> lmMap;
 		if (! authorLangModelsMap.containsKey(author)) 
-			 lmMap = new HashMap<String, LanguageModelInterface>();
+			 lmMap = new HashMap<>();
 		else 
 			lmMap = authorLangModelsMap.get(author);
 		 lmMap.put(lmName, lm);
@@ -146,26 +146,26 @@ retourner auteurMax
 		reco_small_author_corpus_100sentences();
 
 		/* Tests sur les 5000 phrases de validation, avec les petits modèles de langage */
-		//reco_small_author_corpus_5000sentences();
+		reco_small_author_corpus_5000sentences();
 
 
 		/* Tests sur les 100 phrases de validation, avec les plus gros modèles de langage
 		   que vous devez d'abord avoir construits. */
-		//reco_author_corpus_100sentences();
+		reco_author_corpus_100sentences();
 
 		/* Tests sur les 5000 phrases de validation, avec les plus gros modèles de langage
 		   que vous devez d'abord avoir construits. */
-		//reco_author_corpus_5000sentences();
+		reco_author_corpus_5000sentences();
 
 
 		/* Génération des runs, sur les phrases de test (que vous devez avoir
 		   récupérées sur madoc), avec les petits modèles de langage. */
-		//reco_small_author_corpus_run();
+		reco_small_author_corpus_run();
 
 		/* Génération des runs, sur les phrases de test (que vous devez avoir
 		   récupérées sur madoc), avec les plus gros modèles de langage que vous devez
 		   d'abord avoir construits. */
-		//reco_author_corpus_run();
+		reco_author_corpus_run();
 	}
 
 
@@ -183,14 +183,8 @@ retourner auteurMax
 		String hypFilePath = dirPath + "authors_100sentences_small_author_corpus_hyp-reco1.txt";
 		String refFilePath = dirPath + "authors_100sentences_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -205,17 +199,11 @@ retourner auteurMax
 		String dirPath = "data/author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences.txt";
-		String hypFilePath = dirPath + "authors_small_author_corpus_hyp-reco1.txt";
+		String hypFilePath = dirPath + "authors_5000sentences_small_author_corpus_hyp-reco1.txt";
 		String refFilePath = dirPath + "authors_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -233,14 +221,8 @@ retourner auteurMax
 		String hypFilePath = dirPath + "authors_100sentences_hyp-reco1.txt";
 		String refFilePath = dirPath + "authors_100sentences_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -255,17 +237,11 @@ retourner auteurMax
 		String dirPath = "data/author_corpus/validation/";
 		String authorFilePath = dirPath + "authors.txt";
 		String sentenceFilePath = dirPath + "sentences.txt";
-		String hypFilePath = dirPath + "authors_hyp-reco1.txt";
+		String hypFilePath = dirPath + "authors_5000sentences_hyp-reco1.txt";
 		String refFilePath = dirPath + "authors_ref.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
-
-		//computation of the performance of the recognition system
-		System.out.println("\nPerformances du système : \n" + RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
+		create_evaluate_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+								 sentenceFilePath, hypFilePath, refFilePath);
 	}
 
 
@@ -282,11 +258,8 @@ retourner auteurMax
 		String sentenceFilePath = dirPath + "sentences.txt";
 		String hypFilePath = dirPath + "authors_small_author_corpus_hyp-reco1.txt";
 
-		//initialization of the recognition system
-		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
-
-		//computation of the hypothesis author file
-		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
+		create_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+						sentenceFilePath, hypFilePath);
 	}
 
 
@@ -303,11 +276,34 @@ retourner auteurMax
 		String sentenceFilePath = dirPath + "sentences.txt";
 		String hypFilePath = dirPath + "authors_hyp-reco1.txt";
 
+		create_hyp_file(configFilePath, vocabFilePath, authorFilePath,
+						sentenceFilePath, hypFilePath);
+	}
+
+
+	public static void create_hyp_file(String configFilePath, String vocabFilePath, String authorFilePath,
+									   String sentenceFilePath, String hypFilePath){
 		//initialization of the recognition system
 		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
 
 		//computation of the hypothesis author file
 		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
+	}
+
+
+	public static void create_evaluate_hyp_file(String configFilePath, String vocabFilePath,
+												String authorFilePath, String sentenceFilePath,
+												String hypFilePath, String refFilePath) {
+
+		//initialization of the recognition system
+		AuthorRecognizer1 reco1 = new AuthorRecognizer1(configFilePath, vocabFilePath, authorFilePath);
+
+		//computation of the hypothesis author file
+		reco1.recognizeFileLanguage(sentenceFilePath, hypFilePath);
+
+		//computation of the performance of the recognition system
+		System.out.println("\nPerformances du système : \n"
+				+ RecognizerPerformance.evaluateAuthors(refFilePath, hypFilePath));
 	}
 
 }
